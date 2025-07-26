@@ -1,23 +1,25 @@
 #include <iostream>
-#include <sstream>
-#include <string>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
+
 int main(){
-    int t;
-    cin >> t;
-    cin.ignore();
-    while(t--){
-        string s;
-        getline(cin, s);
-        stringstream ss(s);
-        string temp;
-        int count = 0;
-        while(ss >> temp){
-            cout << temp << endl;
-            cout << temp.size() << endl;
-            count++; 
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    vector<int> v;
+    int n,m;
+    cin >> n >> m;
+    vector<vector<int>> a(n,vector<int> (m));
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin >> a[i][j];
+            v.push_back(a[i][j]);
         }
-        cout << count << endl;
     }
+    int max = *max_element(v.begin(),v.end());
+    int min = *min_element(v.begin(),v.end());
+    cout << max << " " << min << endl;
+    return 0;
 }
